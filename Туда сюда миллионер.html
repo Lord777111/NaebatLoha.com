@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Туда-Сюда Миллионер</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+    header {
+      background: #333;
+      padding: 10px;
+      text-align: center;
+    }
+    h1 {
+      color: #e91e63;
+    }
+    section {
+      padding: 20px;
+    }
+    .chart-container {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    canvas {
+      background: #222;
+      border: 1px solid #555;
+    }
+    .forum {
+      margin-top: 40px;
+    }
+    .forum form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .forum textarea, .forum input[type="text"] {
+      padding: 10px;
+      border: 1px solid #555;
+      background: #222;
+      color: #fff;
+      width: 100%;
+    }
+    .forum button {
+      padding: 10px;
+      background: #e91e63;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    .forum button:hover {
+      background: #ff4081;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: #333;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Туда-Сюда Миллионер</h1>
+    <p>Тактка рабочая отвечаю!</p>
+  </header>
+<marquee behavior="scroll" direction="left" scrollamount="5">
+  ОН НЕ ВРЕТ ОТВЕЧАЮ! Успех, миллион, развод, яхта — всё туда-сюда.
+</marquee>
+
+  <section>
+    <h2>Как стать миллионером? Конечно же просто купить мои курсы </h2>
+    <p>
+      Первый шаг к миллиону — понять, что вы его никогда не заработаете. Если заработаете — поздравляем! Вы в шаге от банкротства. Мы предлагаем жизненно важные схемы, которые объясняют все:
+    </p>
+    <div class="chart-container">
+      <canvas id="moneyChart" width="400" height="200"></canvas>
+    </div>
+    <p>
+      Средний миллионер теряет 80% дохода на яхты, разводы и "гениальные" инвестиции. Остальные 20% уходят на адвокатов.
+    </p>
+  </section>
+
+  <section>
+    <h2>Гениальная схема успеха</h2>
+    <ul>
+      <li>Работайте 24/7 — забудьте про личную жизнь.</li>
+      <li>Вкладывайте все в сомнительные проекты.</li>
+      <li>Когда потеряете всё, начните писать книгу: "Как я потерял миллион".</li>
+    </ul>
+  </section>
+
+  <section class="forum">
+    <h2>Форум: поделитесь своим "успехом"</h2>
+    <form>
+      <input type="text" placeholder="Ваше имя" required>
+      <textarea placeholder="На ваше мнение всем похер..." rows="4" required></textarea>
+      <button type="submit">Отправить</button>
+    </form>
+    <div id="comments">
+      <p><strong>Антон:</strong> Заработал миллион, потратил на лечение нервов. Всем советую!</p>
+      <p><strong>Мария:</strong> Инвестировала в крипту. Теперь я владелица 1 миллиона долларов(она не знает как пишется слово долгов).</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 OOO NurislamCorpareited. Все права защищены, или нет.</p>
+  </footer>
+
+  <script>
+    // Генерация графика
+    const ctx = document.getElementById('moneyChart').getContext('2d');
+    const data = {
+      labels: ['Работа', 'Инвестиции', 'Яхты', 'Разводы', 'Адвокаты'],
+      datasets: [{
+        label: 'Куда уходит ваш миллион',
+        data: [30, 20, 25, 15, 10],
+        backgroundColor: ['#e91e63', '#ff5722', '#ffc107', '#8bc34a', '#03a9f4']
+      }]
+    };
+    new Chart(ctx, {
+      type: 'pie',
+      data: data
+    });
+
+    // Простой "форум" (без сохранения данных)
+    const form = document.querySelector('.forum form');
+    const comments = document.getElementById('comments');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = form.querySelector('input').value;
+      const comment = form.querySelector('textarea').value;
+
+      const newComment = document.createElement('p');
+      newComment.innerHTML = `<strong>${name}:</strong> ${comment}`;
+      comments.appendChild(newComment);
+
+      form.reset();
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
